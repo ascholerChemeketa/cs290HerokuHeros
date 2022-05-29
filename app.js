@@ -14,9 +14,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //Use database with mongoose
-const credentials = require("./dbCredentials.js");
+//Have connection string in environmental variable
+let connection_string = process.env.DBString;
+
+//const credentials = require("./dbCredentials.js");
 const mongoose = require("mongoose");
-mongoose.connect(credentials.connection_string, {
+mongoose.connect(connection_string, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
