@@ -97,7 +97,8 @@ exports.update_post = [
   // body("name").escape(),                  //function call to sanitize the name input
   // body("secretIdentity").escape(),        //sanitize secret identity
   // body("powers").escape(),                //sanitize powers
-  async function (req, res, next) {       //now run my handler
+  async function (req, res, next) {
+    //now run my handler
     try {
       //If team exists in DB, fetch it
       let hero = await Hero.findById(req.params.id).exec();
@@ -107,7 +108,7 @@ exports.update_post = [
           _id: req.body.id,
         });
 
-      console.log(req.body);
+      console.log("Requst body:", req.body);
 
       //Process Powers Input - split string into an array
       let powersList = req.body.powers.split("\n");
